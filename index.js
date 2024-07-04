@@ -1,17 +1,7 @@
-let fruits = ["apple", "orange","strawberry","pienapple"];
+const numbers = [1,2,3,4,5,6];
 
-fruits.forEach(upperCase);
-fruits.forEach(displayConsole);
-fruits.forEach(displayPage);
+const squares = numbers.map(function(element){
+    return Math.pow(element,2);
+});
 
-function upperCase(element, index, array){
-    array[index] = element.charAt(0).toUpperCase() + element.slice(1).toLowerCase();
-}
-
-function displayConsole(element){
-    console.log(element);
-}
-
-function displayPage(){
-    document.getElementById("fruitList").textContent = fruits.join(', ')
-}
+console.log(squares);
