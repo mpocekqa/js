@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milovan website</title>
+    <link rel="stylesheet" href="styleDiceRoller.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Dice Roller</h1>
+        <button onclick="rollDice()">Roll dice 1st time</button>
+        <div id="diceResult"></div>
+        <div id="diceImages"></div>
+        <div id="selectedDices"></div>
+        <div id="selectedDicesImages"></div>
+        <button onclick="saveResult()">Save result</button>
+    </div>
+    <table>
+        <tr>
+          <td>&nbsp;</td>
+          <td>Down</td>
+          <td>random</td>
+          <td>up</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td id="12">&nbsp;</td>
+          <td id="13">&nbsp;</td>
+          <td id="14">&nbsp;</td>
+        </tr>
+        <tr>
+           <td>2</td>
+           <td id="22">&nbsp;</td>
+           <td id="23">&nbsp;</td>
+           <td id="24">&nbsp;</td>
+        </tr>
+        <tr>
+           <td>3</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+        </tr>
+        <tr>
+           <td>4</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+        </tr>
+        <tr>
+           <td>5</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+        </tr>
+        <tr>
+           <td>6</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+        </tr>
+      </table>
+
+    <script src="diceRoller.js"></script>
+</body>
+</html>
