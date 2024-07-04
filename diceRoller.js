@@ -1,5 +1,13 @@
-const savedValues = [];
-const savedDicesImages = [];
+const diceResult = document.getElementById("diceResult");
+const diceImages = document.getElementById("diceImages");
+const selectedDices = document.getElementById("selectedDices");
+const selectedDicesImages = document.getElementById("selectedDicesImages");
+const rollButton = document.getElementById("rollButton");
+
+
+
+let savedValues = [];
+let savedDicesImages = [];
 let values = [];
 let images = [];
 let numOfDice = 5;
@@ -8,11 +16,8 @@ let rollNum = 1;
 
 
 function rollDice(){
-    //numOfDice = document.getElementById("numOfDice").value;
+
     if(rollNum <=3){
-    //numOfDice = 5;
-    const diceResult = document.getElementById("diceResult");
-    const diceImages = document.getElementById("diceImages");
 
     values = [];
     images = [];
@@ -23,25 +28,28 @@ function rollDice(){
         images.push(`<img onclick="saveDice(${i})" id="image${i}" name="${value}" src="dice_images/${value}.png">`)
     }
 
-    diceResult.textContent = `dice: ${values.join(', ')}`;
+    diceResult.textContent = `: ${values.join(', ')}`;
     diceImages.innerHTML = images.join('');
+
     rollNum = rollNum+1;
+        if(rollNum == 2){
+            rollButton.textContent = "2nd time"
+        }
+        if(rollNum == 3){
+            rollButton.textContent = "3rd time"
+        }
     }
-    else {
+    else{
         window.alert("Pa bacao si vec 3 puta");
     }
 }
 
 function saveDice(id){
-    //document.getElementById("diceImages").innerHTML = "";
-
-    const diceImages = document.getElementById("diceImages");
-    const selectedDices = document.getElementById("selectedDices");
     let valueOftheDice = document.getElementById("image"+id).getAttribute('name');
     savedValues.push(valueOftheDice);
-    savedDicesImages.push(`<img src="dice_images/${valueOftheDice}.png">`)
+    savedDicesImages.push(`<img onclick="unsaveDice(this.name)" name=${valueOftheDice} src="dice_images/${valueOftheDice}.png">`)
 
-    selectedDices.textContent = `saved dices: ${savedValues.join(', ')}`;
+    selectedDices.textContent = `saved: ${savedValues.join(', ')}`;
     selectedDicesImages.innerHTML = savedDicesImages.join('');
 
     let indexInArray;
@@ -59,12 +67,10 @@ function saveDice(id){
         let value = values[i];
         images.push(`<img onclick="saveDice(${i})" id="image${i}" name="${value}" src="dice_images/${value}.png">`)
     }
-    diceResult.textContent = `dice: ${values.join(', ')}`;
+    diceResult.textContent = `: ${values.join(', ')}`;
 
     diceImages.innerHTML = images.join('');
     numOfDice = numOfDice-1;
-    //document.getElementById("numOfDice").value = numOfDice;
-
 }
 
 function saveResult(){
@@ -77,4 +83,47 @@ function saveResult(){
         
     }
     document.getElementById(number + "2").textContent = zbir;
+}
+
+function unsaveDice(element){
+    console.log("sacuvane vrednosti: " + savedValues);
+    console.log("inicijalne vrednosti: " + values);
+    values.push(element);
+    console.log("nakon prebacivanja: " + values);
+    let indexOfElement;
+    for (let index = 0; index < savedValues.length; index++) {
+        if(element==savedValues[index]){
+            indexOfElement = index;
+        }   
+    }
+    console.log("index: " + indexOfElement);
+
+    savedValues.splice(indexOfElement,1);
+
+    console.log("nakon prebacivanja sacuvane vrednosti: " + savedValues);
+
+    images = [];
+    for(let i = 0; i < values.length; i++){
+        let value = values[i];
+        images.push(`<img onclick="saveDice(${i})" id="image${i}" name="${value}" src="dice_images/${value}.png">`)
+    }
+
+    diceResult.textContent = ``;
+
+    diceResult.textContent = `: ${values.join(', ')}`;
+
+    diceImages.innerHTML = images.join('');
+    selectedDicesImages.innerHTML = '';
+
+    selectedDices.textContent = `saved: ${savedValues.join(', ')}`;
+    savedDicesImages = [];
+
+    for(let i = 0; i < savedValues.length; i++){
+        let value = savedValues[i];
+        savedDicesImages.push(`<img onclick="unsaveDice(this.name)" name="${value}" src="dice_images/${value}.png">`)
+    }
+
+    selectedDicesImages.innerHTML = savedDicesImages.join('');
+    numOfDice = numOfDice+1;
+    
 }
