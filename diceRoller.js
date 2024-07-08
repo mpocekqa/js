@@ -3,6 +3,7 @@ const diceImages = document.getElementById("diceImages");
 const selectedDices = document.getElementById("selectedDices");
 const selectedDicesImages = document.getElementById("selectedDicesImages");
 const rollButton = document.getElementById("rollButton");
+const rollLabel = document.getElementById("throwLabel");
 
 
 
@@ -13,6 +14,7 @@ let images = [];
 let numOfDice = 5;
 let maxRolles = 3;
 let rollNum = 1;
+let throwNum = 1;
 
 
 function rollDice(){
@@ -126,4 +128,110 @@ function unsaveDice(element){
     selectedDicesImages.innerHTML = savedDicesImages.join('');
     numOfDice = numOfDice+1;
     
+}
+
+function saveResultDown(){
+    let number;
+    sumOfNumbers = 0;
+    for (let index = 0; index < savedValues.length; index++) {
+        number = savedValues[index];
+        if((index + 1) < savedValues.length){
+            if(number != savedValues[index+1]){
+                window.alert("Pa nisu ti isti brojevi!!!")   
+            }
+        }
+        sumOfNumbers += Number (number);
+    }
+    console.log("Number je: " + number);
+    rows = [1,2,3,4,5,6]
+    let availableNumber;
+    for (let index = 0; index < 6; index++) {
+        el = document.getElementById(rows[index] + "2");
+        //console.log(rows[index] + "2");
+        if (el.textContent===' ') {
+            
+            availableNumber = rows[index];
+            console.log("bingo: " + availableNumber);
+            break;
+        }      
+    }
+
+    console.log("Available is: " + availableNumber);
+
+    if(number == availableNumber){
+        console.log("isti su");
+        document.getElementById(availableNumber + "2").textContent = sumOfNumbers;
+    }else{
+        window.alert("Polje za broj " + number + " nije dostupno");
+    }
+}
+
+function newThrow(){
+        values = [];
+        images = [];
+        savedValues = [];
+        savedDicesImages = [];
+        throwNum += 1;
+        rollLabel.textContent = "throw " + throwNum + ". :";
+        rollButton.textContent = "1st time"
+        rollNum = 1;
+        numOfDice = 5;
+        diceResult.textContent = ``;
+        diceImages.innerHTML = ``;
+        selectedDices.textContent = ``;
+        selectedDicesImages.innerHTML = ``;
+}
+
+function saveResultRandom(){
+    let number;
+    sumOfNumbers = 0;
+    for (let index = 0; index < savedValues.length; index++) {
+        number = savedValues[index];
+        if((index + 1) < savedValues.length){
+            if(number != savedValues[index+1]){
+                window.alert("Pa nisu ti isti brojevi!!!")   
+            }
+        }
+        sumOfNumbers += Number (number);
+    }
+    console.log("Number je: " + number);
+    
+    document.getElementById(number + "3").textContent = sumOfNumbers;
+
+}
+
+function saveResultUp(){
+    let number;
+    sumOfNumbers = 0;
+    for (let index = 0; index < savedValues.length; index++) {
+        number = savedValues[index];
+        if((index + 1) < savedValues.length){
+            if(number != savedValues[index+1]){
+                window.alert("Pa nisu ti isti brojevi!!!")   
+            }
+        }
+        sumOfNumbers += Number (number);
+    }
+    console.log("Number je: " + number);
+    rows = [6,5,4,3,2,1]
+    let availableNumber;
+    for (let index = 0; index < 6; index++) {
+        el = document.getElementById(rows[index] + "4");
+        //console.log(rows[index] + "2");
+        if (el.textContent===' ') {
+            
+            availableNumber = rows[index];
+            console.log("bingo: " + availableNumber);
+            break;
+        }      
+    }
+
+    console.log("Available is: " + availableNumber);
+
+    if(number == availableNumber){
+        console.log("isti su");
+        document.getElementById(availableNumber + "4").textContent = sumOfNumbers;
+    }else{
+        window.alert("Polje za broj " + number + " nije dostupno");
+    }
 }

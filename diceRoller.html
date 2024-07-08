@@ -9,12 +9,12 @@
 <body>
     <div id="container">
         <h1>Test</h1>
+        <label id="throwLabel">throw 1:</label>
         <button onclick="rollDice()" id="rollButton">1st time</button>
         <div id="diceResult"></div>
         <div id="diceImages"></div>
         <div id="selectedDices"></div>
         <div id="selectedDicesImages"></div>
-        <button onclick="saveResult()">result</button>
     </div>
     <table>
         <tr>
@@ -25,42 +25,48 @@
         </tr>
         <tr>
           <td>1</td>
-          <td id="12">&nbsp;</td>
-          <td id="13">&nbsp;</td>
-          <td id="14">&nbsp;</td>
+          <td onclick="saveResultDown()" id="12">&nbsp;</td>
+          <td onclick="saveResultRandom()" id="13">&nbsp;</td>
+          <td onclick="saveResultUp()" id="14">&nbsp;</td>
         </tr>
         <tr>
            <td>2</td>
-           <td id="22">&nbsp;</td>
-           <td id="23">&nbsp;</td>
-           <td id="24">&nbsp;</td>
+           <td onclick="saveResultDown()" id="22">&nbsp;</td>
+           <td onclick="saveResultRandom()" id="23">&nbsp;</td>
+           <td onclick="saveResultUp()" id="24">&nbsp;</td>
         </tr>
         <tr>
            <td>3</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
+           <td onclick="saveResultDown()" id="32">&nbsp;</td>
+           <td onclick="saveResultRandom()" id="33">&nbsp;</td>
+           <td onclick="saveResultUp()" id="34">&nbsp;</td>
         </tr>
         <tr>
            <td>4</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
+           <td onclick="saveResultDown()" id="42">&nbsp;</td>
+           <td onclick="saveResultRandom()" id="43">&nbsp;</td>
+           <td onclick="saveResultUp()" id="44">&nbsp;</td>
         </tr>
         <tr>
            <td>5</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
+           <td onclick="saveResultDown()" id="52">&nbsp;</td>
+           <td onclick="saveResultRandom()" id="53">&nbsp;</td>
+           <td onclick="saveResultUp()" id="54">&nbsp;</td>
         </tr>
         <tr>
            <td>6</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
-           <td>&nbsp;</td>
+           <td onclick="saveResultDown()" id="62">&nbsp;</td>
+           <td onclick="saveResultRandom()" id="63">&nbsp;</td>
+           <td onclick="saveResultUp()" id="64">&nbsp;</td>
         </tr>
+        <tr>
+         <td>sum</td>
+         <td id="sum2">&nbsp;</td>
+         <td id="sum3">&nbsp;</td>
+         <td id="sum4">&nbsp;</td>
+      </tr>
       </table>
-
+      <button onclick="newThrow()" id="newThrow">New throw</button>
     <script src="diceRoller.js"></script>
 </body>
 </html>
