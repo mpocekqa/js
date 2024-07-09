@@ -58,3 +58,21 @@ td:hover{
     background-color: aqua;
     cursor: pointer;
 }
+th{
+    background-color: antiquewhite;
+}
+
+#saveCalled{
+
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+    padding: 2px 3px;
+    border-radius: 3px;
+    border: none;
+    background-color: rgb(219, 226, 128);
+    color: rgb(14, 14, 14);
+    font-weight: bold;
+    cursor:help;
+}

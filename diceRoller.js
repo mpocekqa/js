@@ -15,6 +15,8 @@ let numOfDice = 5;
 let maxRolles = 3;
 let rollNum = 1;
 let throwNum = 1;
+let called = false;
+
 
 
 function rollDice(){
@@ -164,9 +166,29 @@ function saveResultDown(){
     }else{
         window.alert("Polje za broj " + number + " nije dostupno");
     }
+
+    if(number==6){
+        let sumDown = 0
+        for (let index = 0; index < rows.length; index++) {
+            let element = Number (document.getElementById(rows[index] + "2").textContent);
+            sumDown += element;  
+        }
+        if(sumDown>=60){
+            sumDown+=30;
+        }
+        document.getElementById("sum2").textContent = sumDown;
+    }
 }
 
 function newThrow(){
+        if(called){
+            let sum = 0;
+                for (let index = 0; index < savedValues.length; index++) {
+            sum += savedValues[index];
+        }
+        document.getElementById(savedValues[0] + "5").textContent = sum;
+        }
+
         values = [];
         images = [];
         savedValues = [];
@@ -180,24 +202,55 @@ function newThrow(){
         diceImages.innerHTML = ``;
         selectedDices.textContent = ``;
         selectedDicesImages.innerHTML = ``;
+        
 }
 
-function saveResultRandom(){
-    let number;
-    sumOfNumbers = 0;
-    for (let index = 0; index < savedValues.length; index++) {
-        number = savedValues[index];
-        if((index + 1) < savedValues.length){
-            if(number != savedValues[index+1]){
-                window.alert("Pa nisu ti isti brojevi!!!")   
+function saveResultRandom(element){
+    if(element.textContent!==' '){
+        window.alert("zauzeto!");
+    }else{
+        let number;
+        sumOfNumbers = 0;
+        for (let index = 0; index < savedValues.length; index++) {
+            number = savedValues[index];
+            if((index + 1) < savedValues.length){
+                if(number != savedValues[index+1]){
+                    window.alert("Pa nisu ti isti brojevi!!!")   
+                }
             }
+            sumOfNumbers += Number (number);
         }
-        sumOfNumbers += Number (number);
+        console.log("Number je: " + number);
+        
+        document.getElementById(number + "3").textContent = sumOfNumbers;
     }
-    console.log("Number je: " + number);
-    
-    document.getElementById(number + "3").textContent = sumOfNumbers;
 
+    let e = document.getElementById("13").textContent;
+    console.log(e);
+
+    let allPopulated = true;
+    for (let index = 1; index < 7; index++) {
+        let id = index + "3";
+        id = String(id);
+        let element = document.getElementById(id).textContent;
+        console.log(element);
+        if(element==' '){
+            allPopulated = false;
+            break;
+        } 
+        console.log(allPopulated);       
+    }
+    if(allPopulated){
+        let sumUp = 0
+        for (let index = 1; index < 7; index++) {
+            let element = Number (document.getElementById(index + "3").textContent);
+            sumUp += element;  
+        }
+        if(sumUp>=60){
+            sumUp+=30;
+        }
+        document.getElementById("sum3").textContent = sumUp;
+    }
 }
 
 function saveResultUp(){
@@ -234,4 +287,60 @@ function saveResultUp(){
     }else{
         window.alert("Polje za broj " + number + " nije dostupno");
     }
+
+    if(number==1){
+        let sumUp = 0
+        for (let index = 0; index < rows.length; index++) {
+            let element = Number (document.getElementById(rows[index] + "4").textContent);
+            sumUp += element;  
+        }
+        if(sumUp>=60){
+            sumUp+=30;
+        }
+        document.getElementById("sum4").textContent = sumUp;
+    }
+}
+
+function calculateDiceSum(element){
+    let sum = 0;
+    sum = Number (sum);
+    if(savedValues.length!=5){
+        window.alert("Please select 5 diceis");
+    }else{
+        for (let index = 0; index < savedValues.length; index++) {
+            sum += Number (savedValues[index]);
+        }
+        document.getElementById(element.id).textContent = sum;
+    }
+    
+}
+
+function call(element){
+    console.log("Pozvan sam");
+    
+    if (called == false) {
+        if(rollNum!=2){
+            window.alert("call posible only after first dice roll")
+        }else{
+            called = true;
+            let button = `<button onclick="saveCalled()" id="saveCalled">save called</button>`;
+            //document.getElementById("container1").insertAdjacentHTML ('afterend', button);
+            document.getElementById("container1").innerHTML = button;
+            document.getElementById(element.id).style.backgroundColor = "#8DFF33";
+            document.getElementById(element.id).innerText = "Called";
+        }
+    }
+}
+
+function saveCalled(){
+    console.log("ovde sam, a called je:" + called);
+    let sum = 0;
+    for (let index = 0; index < savedValues.length; index++) {
+        sum += Number (savedValues[index]);
+    }
+    let domElemetnt = document.getElementById(savedValues[0] + "5");
+    domElemetnt.textContent = sum;
+    domElemetnt.style.backgroundColor = "#FFFFFF";
+    called=false;
+    document.getElementById("container1").innerHTML = '';
 }

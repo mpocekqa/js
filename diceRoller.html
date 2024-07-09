@@ -16,56 +16,87 @@
         <div id="selectedDices"></div>
         <div id="selectedDicesImages"></div>
     </div>
-    <table>
+    <div id="container1">
+   </div>
+    <table border="1" width="800">
         <tr>
-          <td>&nbsp;</td>
-          <td>Down</td>
-          <td>random</td>
-          <td>up</td>
+          <th>&nbsp;</th>
+          <th>Down</th>
+          <th>random</th>
+          <th>up</th>
+          <th>call</th>
         </tr>
         <tr>
           <td>1</td>
           <td onclick="saveResultDown()" id="12">&nbsp;</td>
-          <td onclick="saveResultRandom()" id="13">&nbsp;</td>
+          <td onclick="saveResultRandom(this)" id="13">&nbsp;</td>
           <td onclick="saveResultUp()" id="14">&nbsp;</td>
+          <td onclick="call(this)" name="1" id="15">&nbsp;</td>
         </tr>
         <tr>
            <td>2</td>
            <td onclick="saveResultDown()" id="22">&nbsp;</td>
-           <td onclick="saveResultRandom()" id="23">&nbsp;</td>
+           <td onclick="saveResultRandom(this)" id="23">&nbsp;</td>
            <td onclick="saveResultUp()" id="24">&nbsp;</td>
+           <td onclick="call(this)" name="2" id="25">&nbsp;</td>
         </tr>
         <tr>
            <td>3</td>
            <td onclick="saveResultDown()" id="32">&nbsp;</td>
-           <td onclick="saveResultRandom()" id="33">&nbsp;</td>
+           <td onclick="saveResultRandom(this)" id="33">&nbsp;</td>
            <td onclick="saveResultUp()" id="34">&nbsp;</td>
+           <td onclick="call(this)" name="3" id="35">&nbsp;</td>
         </tr>
         <tr>
            <td>4</td>
            <td onclick="saveResultDown()" id="42">&nbsp;</td>
-           <td onclick="saveResultRandom()" id="43">&nbsp;</td>
+           <td onclick="saveResultRandom(this)" id="43">&nbsp;</td>
            <td onclick="saveResultUp()" id="44">&nbsp;</td>
+           <td onclick="call(this)" name="4" id="45">&nbsp;</td>
         </tr>
         <tr>
            <td>5</td>
            <td onclick="saveResultDown()" id="52">&nbsp;</td>
-           <td onclick="saveResultRandom()" id="53">&nbsp;</td>
+           <td onclick="saveResultRandom(this)" id="53">&nbsp;</td>
            <td onclick="saveResultUp()" id="54">&nbsp;</td>
+           <td onclick="call(this)" name="5" id="55">&nbsp;</td>
         </tr>
         <tr>
            <td>6</td>
            <td onclick="saveResultDown()" id="62">&nbsp;</td>
-           <td onclick="saveResultRandom()" id="63">&nbsp;</td>
+           <td onclick="saveResultRandom(this)" id="63">&nbsp;</td>
            <td onclick="saveResultUp()" id="64">&nbsp;</td>
+           <td onclick="call(this)" name="6" id="65">&nbsp;</td>
         </tr>
         <tr>
-         <td>sum</td>
-         <td id="sum2">&nbsp;</td>
-         <td id="sum3">&nbsp;</td>
-         <td id="sum4">&nbsp;</td>
+         <th>sum</th>
+         <th onclick="sumResultDown()" id="sum2">&nbsp;</th>
+         <th onclick="sumResultRandom()" id="sum3">&nbsp;</th>
+         <th onclick="sumResultsUp()" id="sum4">&nbsp;</th>
+         <th onclick="call(this)" name="sumCalled" id="sumCalled">&nbsp;</th>
       </tr>
-      </table>
+      <tr>
+         <td>max</td>
+         <td onclick="calculateDiceSum(this)" id="maxDown">&nbsp;</td>
+         <td onclick="calculateDiceSum(this)" id="maxRandom">&nbsp;</td>
+         <td onclick="calculateDiceSum(this)" id="maxUp">&nbsp;</td>
+         <td onclick="call(this)" name="maxCalled" id="maxCalled">&nbsp;</td>
+      </tr>
+      <tr>
+         <td>min</td>
+         <td onclick="calculateDiceSum(this)" id="minDown">&nbsp;</td>
+         <td onclick="calculateDiceSum(this)" id="minRandom">&nbsp;</td>
+         <td onclick="calculateDiceSum(this)" id="minUp">&nbsp;</td>
+         <td onclick="call(this)" name="minCalled" id="minCalled">&nbsp;</td>
+      </tr>
+      <tr>
+         <th>minmax x 1</th>
+         <th onclick="minmaxResultDown()" id="sum2">&nbsp;</th>
+         <th onclick="minmaxResultRandom()" id="sum3">&nbsp;</th>
+         <th onclick="minmaxResultsUp()" id="sum4">&nbsp;</th>
+         <th onclick="call(this)" name="minmaxCalled" id="minmaxCalled">&nbsp;</th>
+      </tr>
+      </table><br><br>
       <button onclick="newThrow()" id="newThrow">New throw</button>
     <script src="diceRoller.js"></script>
 </body>
