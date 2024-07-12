@@ -25,6 +25,7 @@
           <th>random</th>
           <th>up</th>
           <th>call</th>
+          <th>first</th>
         </tr>
         <tr>
           <td>1</td>
@@ -32,6 +33,7 @@
           <td onclick="saveResultRandom(this)" id="13">&nbsp;</td>
           <td onclick="saveResultUp()" id="14">&nbsp;</td>
           <td onclick="call(this)" name="1" id="15">&nbsp;</td>
+          <td onclick="first(this)" name="1" id="16">&nbsp;</td>
         </tr>
         <tr>
            <td>2</td>
@@ -39,6 +41,7 @@
            <td onclick="saveResultRandom(this)" id="23">&nbsp;</td>
            <td onclick="saveResultUp()" id="24">&nbsp;</td>
            <td onclick="call(this)" name="2" id="25">&nbsp;</td>
+           <td onclick="first(this)" name="2" id="26">&nbsp;</td>
         </tr>
         <tr>
            <td>3</td>
@@ -46,6 +49,7 @@
            <td onclick="saveResultRandom(this)" id="33">&nbsp;</td>
            <td onclick="saveResultUp()" id="34">&nbsp;</td>
            <td onclick="call(this)" name="3" id="35">&nbsp;</td>
+           <td onclick="first(this)" name="3" id="36">&nbsp;</td>
         </tr>
         <tr>
            <td>4</td>
@@ -53,6 +57,7 @@
            <td onclick="saveResultRandom(this)" id="43">&nbsp;</td>
            <td onclick="saveResultUp()" id="44">&nbsp;</td>
            <td onclick="call(this)" name="4" id="45">&nbsp;</td>
+           <td onclick="first(this)" name="4" id="46">&nbsp;</td>
         </tr>
         <tr>
            <td>5</td>
@@ -60,6 +65,7 @@
            <td onclick="saveResultRandom(this)" id="53">&nbsp;</td>
            <td onclick="saveResultUp()" id="54">&nbsp;</td>
            <td onclick="call(this)" name="5" id="55">&nbsp;</td>
+           <td onclick="first(this)" name="5" id="56">&nbsp;</td>
         </tr>
         <tr>
            <td>6</td>
@@ -67,6 +73,7 @@
            <td onclick="saveResultRandom(this)" id="63">&nbsp;</td>
            <td onclick="saveResultUp()" id="64">&nbsp;</td>
            <td onclick="call(this)" name="6" id="65">&nbsp;</td>
+           <td onclick="first(this)" name="6" id="66">&nbsp;</td>
         </tr>
         <tr>
          <th>sum</th>
@@ -74,6 +81,7 @@
          <th onclick="sumResultRandom()" id="sum3">&nbsp;</th>
          <th onclick="sumResultsUp()" id="sum4">&nbsp;</th>
          <th onclick="call(this)" name="sumCalled" id="sumCalled">&nbsp;</th>
+         <th onclick="first(this)" name="sum" id="76">&nbsp;</td>
       </tr>
       <tr>
          <td>max</td>
@@ -81,6 +89,7 @@
          <td onclick="calculateDiceSum(this)" id="maxRandom">&nbsp;</td>
          <td onclick="calculateDiceSum(this)" id="maxUp">&nbsp;</td>
          <td onclick="call(this)" name="maxCalled" id="maxCalled">&nbsp;</td>
+         <td onclick="calculateDiceSumfirst(this)" name="max" id="86">&nbsp;</td>
       </tr>
       <tr>
          <td>min</td>
@@ -88,16 +97,57 @@
          <td onclick="calculateDiceSum(this)" id="minRandom">&nbsp;</td>
          <td onclick="calculateDiceSum(this)" id="minUp">&nbsp;</td>
          <td onclick="call(this)" name="minCalled" id="minCalled">&nbsp;</td>
+         <td onclick="calculateDiceSumfirst(this)" name="min" id="96">&nbsp;</td>
       </tr>
       <tr>
          <th>minmax x 1</th>
-         <th onclick="minmaxResultDown()" id="sum2">&nbsp;</th>
-         <th onclick="minmaxResultRandom()" id="sum3">&nbsp;</th>
-         <th onclick="minmaxResultsUp()" id="sum4">&nbsp;</th>
+         <th onclick="minmax(this)" id="minmaxDown" name="12">&nbsp;</th>
+         <th onclick="minmax(this)" id="minmaxRandom" name="13">&nbsp;</th>
+         <th onclick="minmax(this)" id="minmaxUp" name="14">&nbsp;</th>
          <th onclick="call(this)" name="minmaxCalled" id="minmaxCalled">&nbsp;</th>
+         <th onclick="minmax(this)" name="16" id="minmaxFirst">&nbsp;</th>
       </tr>
-      </table><br><br>
-      <button onclick="newThrow()" id="newThrow">New throw</button>
+      <tr>
+         <td>Ken</td>
+         <td onclick="kenta(this)" id="kentaDown">&nbsp;</td>
+         <td onclick="kenta(this)" id="kentaRandom">&nbsp;</td>
+         <td onclick="kenta(this)" id="kentaUp">&nbsp;</td>
+         <td onclick="call(this)" name="minCalled" id="minCalled">&nbsp;</td>
+         <td onclick="kentaFirst(this)" name="kenta" id="116">&nbsp;</td>
+      </tr>
+      <tr>
+         <td>triple</td>
+         <td onclick="triple(this)" id="tripleDown">&nbsp;</td>
+         <td onclick="triple(this)" id="tripleRandom">&nbsp;</td>
+         <td onclick="triple(this)" id="tripleUp">&nbsp;</td>
+         <td onclick="call(this)" name="minCalled" id="minCalled">&nbsp;</td>
+         <td onclick="tripleFirst(this)" name="triple" id="126">&nbsp;</td>
+      </tr>
+      <tr>
+         <td>full</td>
+         <td onclick="full(this)" id="fullDown">&nbsp;</td>
+         <td onclick="full(this)" id="fullRandom">&nbsp;</td>
+         <td onclick="full(this)" id="fullUp">&nbsp;</td>
+         <td onclick="call(this)" name="minCalled" id="minCalled">&nbsp;</td>
+         <td onclick="fullFirst(this)" name="full" id="136">&nbsp;</td>
+      </tr>
+      <tr>
+         <td>poc</td>
+         <td onclick="poc(this)" id="pocDown">&nbsp;</td>
+         <td onclick="poc(this)" id="pocRandom">&nbsp;</td>
+         <td onclick="poc(this)" id="pocUp">&nbsp;</td>
+         <td onclick="call(this)" name="minCalled" id="minCalled">&nbsp;</td>
+         <td onclick="pocFirst(this)" name="poc" id="146">&nbsp;</td>
+      </tr>
+      <tr>
+         <td>ja</td>
+         <td onclick="ja(this)" id="jaDown">&nbsp;</td>
+         <td onclick="ja(this)" id="jaRandom">&nbsp;</td>
+         <td onclick="ja(this)" id="jaUp">&nbsp;</td>
+         <td onclick="call(this)" name="minCalled" id="minCalled">&nbsp;</td>
+         <td onclick="first(this)" name="ja" id="156">&nbsp;</td>
+      </tr>
+      </table>
     <script src="diceRoller.js"></script>
 </body>
 </html>

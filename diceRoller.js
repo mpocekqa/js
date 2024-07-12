@@ -41,10 +41,18 @@ function rollDice(){
         }
         if(rollNum == 3){
             rollButton.textContent = "3rd time"
+        }if(rollNum == 4){
+            rollButton.textContent = "round finished"
         }
     }
     else{
         window.alert("Pa bacao si vec 3 puta");
+    }
+}
+
+function diceRolledCheck(){
+    if (values.length==0) {
+        window.alert("Please roll dice");
     }
 }
 
@@ -133,6 +141,7 @@ function unsaveDice(element){
 }
 
 function saveResultDown(){
+    diceRolledCheck();
     let number;
     sumOfNumbers = 0;
     for (let index = 0; index < savedValues.length; index++) {
@@ -155,7 +164,7 @@ function saveResultDown(){
             availableNumber = rows[index];
             console.log("bingo: " + availableNumber);
             break;
-        }      
+        }  
     }
 
     console.log("Available is: " + availableNumber);
@@ -178,6 +187,7 @@ function saveResultDown(){
         }
         document.getElementById("sum2").textContent = sumDown;
     }
+    newThrow();    
 }
 
 function newThrow(){
@@ -251,6 +261,7 @@ function saveResultRandom(element){
         }
         document.getElementById("sum3").textContent = sumUp;
     }
+    newThrow();    
 }
 
 function saveResultUp(){
@@ -299,6 +310,7 @@ function saveResultUp(){
         }
         document.getElementById("sum4").textContent = sumUp;
     }
+    newThrow();    
 }
 
 function calculateDiceSum(element){
@@ -312,7 +324,7 @@ function calculateDiceSum(element){
         }
         document.getElementById(element.id).textContent = sum;
     }
-    
+    newThrow();
 }
 
 function call(element){
@@ -343,4 +355,288 @@ function saveCalled(){
     domElemetnt.style.backgroundColor = "#FFFFFF";
     called=false;
     document.getElementById("container1").innerHTML = '';
+    newThrow();
 }
+
+function minmax(element){
+    let elementId = element.getAttribute("name");
+    let numbersOf1 = document.getElementById(elementId).textContent;
+    console.log(numbersOf1);
+    let maxId;
+    let minId;
+    if(element.id=="minmaxDown"){
+        maxId = "maxDown";
+        minId = "minDown";
+    }else if(element.id=="minmaxRandom"){
+        maxId = "maxRandom";
+        minId = "minRandom";
+    }else if(element.id=="minmaxUp"){
+        maxId = "maxUp";
+        minId = "minUp";
+    }else if(element.id=="minmaxFirst"){
+        maxId = "86";
+        minId = "96";
+    }
+    max = Number (document.getElementById(maxId).textContent);
+    min = Number (document.getElementById(minId).textContent);
+    console.log(numbersOf1, max, min);
+    if(numbersOf1 ===' ' || max == 0 || min == 0){
+        window.alert("ones, min and max can not be 0")
+    }else{
+        console.log(numbersOf1, max, min);
+        numbersOf1 = Number (numbersOf1);
+        let minmax = (max-min)*numbersOf1;
+        document.getElementById(element.id).textContent = minmax;
+    }
+    newThrow();
+}
+
+function kenta(element){
+    if(savedValues.length!=5){
+        window.alert("Please select all dices");
+    }else{
+        savedValues.sort();
+        console.log(savedValues);
+        for (let index = 0; index < savedValues.length - 1; index++) {
+            let difference = savedValues[index + 1] - savedValues[index];
+            if(difference != 1){
+                window.alert("nije kenta");
+                break;
+            }else{
+                if(rollNum == 2){
+                    document.getElementById(element.id).textContent="66";
+                }else if(rollNum == 3){
+                    document.getElementById(element.id).textContent="56";
+                }else{
+                    document.getElementById(element.id).textContent="46";
+                }
+                
+            }
+        }
+    }
+    newThrow();
+    
+}
+
+function triple(element){
+    for (let index = 0; index < savedValues.length; index++) {
+        number = savedValues[index];
+        if((index + 1) < savedValues.length){
+            if(number != savedValues[index+1]){
+                window.alert("Pa nisu ti isti brojevi!!!")   
+            }
+        }
+    }
+
+    if(savedValues.length<3){
+        window.alert("nemas triling")
+    }else{
+        let triling = (savedValues[0] * 3) + 20;
+        document.getElementById(element.id).textContent = triling;
+    }
+    newThrow();
+}
+
+function full(element){
+    savedValues.sort();
+    let firstValue = Number (savedValues[0]);
+    let secondValue;
+    for (let index = 0; index < savedValues.length; index++) {
+        let x = Number (savedValues[index]);
+        if(x!=firstValue){
+            secondValue=x;
+            break;
+        }
+    }
+    console.log(firstValue);
+    console.log(secondValue);
+    let countFirstValue = 0;
+    let countSecondValue = 0;
+    for (let index = 0; index < savedValues.length; index++) {
+        let x = savedValues[index];
+        if(x == firstValue){
+            countFirstValue+=1;
+        }else if(x==secondValue){
+            countSecondValue+=1;
+        }else{
+            console.log("Broj je problem: " + x)
+        }
+        newThrow();
+    }
+
+    console.log("Broj " + firstValue + " se pojavljuje " + countFirstValue + ". puta");
+    console.log("Broj " + secondValue + " se pojavljuje " + countSecondValue + ". puta");
+
+    let checkNumber = countFirstValue + countSecondValue;
+
+    if(checkNumber!=5){
+        window.alert("ovo nije full")
+    }else{
+        let zbir = 0;
+        for (let index = 0; index < savedValues.length; index++) {
+            let x = Number (savedValues[index]);
+            zbir+=x;
+        }
+        let fullScore = zbir + 30;
+        document.getElementById(element.id).textContent = fullScore;
+    }
+    newThrow();
+}
+
+function poc(element){
+    if(savedValues.length<4){
+        window.alert("Molim vas selektujte 4 broja")
+    }else{
+        let same = true;
+        for (let index = 0; index < savedValues.length -1; index++) {
+            let x = savedValues[index];
+            if(x != savedValues[index+1]){
+                same = false;
+            }   
+        }
+        console.log(same);
+        if(same){
+            let val = (savedValues[0] * 4) + 40;
+            document.getElementById(element.id).textContent = val;
+        }else{
+            window.alert("nije poker")
+        }
+    }
+    newThrow();
+}
+
+function ja(element){
+    if(savedValues.length<5){
+        window.alert("Molim vas selektujte 5 brojeva")
+    }else{
+        let same = true;
+        for (let index = 0; index < savedValues.length -1; index++) {
+            let x = savedValues[index];
+            if(x != savedValues[index+1]){
+                same = false;
+            }   
+        }
+        if(same){
+            let val = (savedValues[0] * 5) + 50;
+            document.getElementById(element.id).textContent = val;
+        }else{
+            window.alert("nije jamb")
+        }
+    }
+    newThrow();
+}
+
+
+function first(element){
+    if(element.textContent!==' '){
+        window.alert("zauzeto!");
+    }else if(rollNum!=2){
+        window.alert("Nije ti prvo bacanje")
+    }
+    else{
+        let number;
+        sumOfNumbers = 0;
+        for (let index = 0; index < savedValues.length; index++) {
+            number = savedValues[index];
+            if((index + 1) < savedValues.length){
+                if(number != savedValues[index+1]){
+                    window.alert("Pa nisu ti isti brojevi!!!")   
+                }
+            }
+            sumOfNumbers += Number (number);
+        }
+        console.log("Number je: " + number);
+
+        
+        if (Number (element.getAttribute("name")) != Number (savedValues[0])) {
+            window.alert("Nije to broj: " + savedValues[0]);
+        }else{
+            document.getElementById(element.getAttribute("name") + "6").textContent = sumOfNumbers;
+        }
+    }
+
+    let e = document.getElementById("13").textContent;
+    console.log(e);
+
+    let allPopulated = true;
+    for (let index = 1; index < 7; index++) {
+        let id = index + "6";
+        id = String(id);
+        let element = document.getElementById(id).textContent;
+        console.log(element);
+        if(element==' '){
+            allPopulated = false;
+            break;
+        } 
+        console.log(allPopulated);       
+    }
+    if(allPopulated){
+        let sumUp = 0
+        for (let index = 1; index < 7; index++) {
+            let element = Number (document.getElementById(index + "6").textContent);
+            sumUp += element;  
+        }
+        if(sumUp>=60){
+            sumUp+=30;
+        }
+        document.getElementById("76").textContent = sumUp;
+    }
+    newThrow();
+}
+
+function calculateDiceSumfirst(element){
+    if(element.textContent!==' '){
+        window.alert("zauzeto!");
+    }else if(rollNum!=2){
+        window.alert("Nije ti prvo bacanje")
+    }
+    else{
+        calculateDiceSum(element);
+    }
+}
+
+function kentaFirst(element){
+    if(element.textContent!==' '){
+        window.alert("zauzeto!");
+    }else if(rollNum!=2){
+        window.alert("Nije ti prvo bacanje")
+    }
+    else{
+        kenta(element);
+    }
+}
+
+function tripleFirst(element){
+    if(element.textContent!==' '){
+        window.alert("zauzeto!");
+    }else if(rollNum!=2){
+        window.alert("Nije ti prvo bacanje")
+    }
+    else{
+        triple(element);
+    }
+}
+
+function pocFirst(element){
+    if(element.textContent!==' '){
+        window.alert("zauzeto!");
+    }else if(rollNum!=2){
+        window.alert("Nije ti prvo bacanje")
+    }
+    else{
+        poc(element);
+    } 
+}
+
+function fullFirst(element){
+    if(element.textContent!==' '){
+        window.alert("zauzeto!");
+    }else if(rollNum!=2){
+        window.alert("Nije ti prvo bacanje")
+    }
+    else{
+        full(element);
+    } 
+}
+
+
